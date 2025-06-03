@@ -1,7 +1,7 @@
-import { NativeModules } from 'react-native';
+const { NativeModules } = require('react-native');
 const { Tappa } = NativeModules;
 
-export default {
+module.exports = {
   initializeTerminal: () => Tappa.initializeTerminal(),
   setErrorHandler: () => Tappa.setErrorHandler(),
   startTransaction: (amount, onSuccess, onError) =>

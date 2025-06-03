@@ -1,4 +1,4 @@
-package com.paysnug.tappa;
+package com.tappa;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;

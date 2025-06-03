@@ -1,4 +1,4 @@
-package com.paysnug.tappa;
+package com.tappa;
 
 import android.util.Log;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -24,43 +24,31 @@ public class TappaModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void initializeTerminal() {
-        try {
-            tappa.initialize(getCurrentActivity(), "merchantId", "terminalId");
-        } catch (Exception e) {
-            Log.e(TAG, "Initialization failed", e);
-        }
+        tappa.initialize(getCurrentActivity(), "merchantId", "terminalId");
     }
 
     @ReactMethod
     public void setErrorHandler() {
-        try {
-            tappa.setErrorCallback(new ErrorCallback() {
-                @Override
-                public void onError(String error) {
-                    Log.e(TAG, "Tappa Error: " + error);
-                }
-            });
-        } catch (Exception e) {
-            Log.e(TAG, "Error handler setup failed", e);
-        }
+        tappa.setErrorCallback(new ErrorCallback() {
+            @Override
+            public void onError(String error) {
+                Log.e(TAG, "Tappa Error: " + error);
+            }
+        });
     }
 
     @ReactMethod
     public void startTransaction(String amount, Callback onSuccess, Callback onError) {
-        try {
-            tappa.performTransaction(amount, new Tappa.TransactionCallback() {
-                @Override
-                public void onSuccess(String response) {
-                    onSuccess.invoke(response);
-                }
+        tappa.performTransaction(amount, new Tappa.TransactionCallback() {
+            @Override
+            public void onSuccess(String response) {
+                onSuccess.invoke(response);
+            }
 
-                @Override
-                public void onFailure(String error) {
-                    onError.invoke(error);
-                }
-            });
-        } catch (Exception e) {
-            onError.invoke("Transaction failed: " + e.getMessage());
-        }
+            @Override
+            public void onFailure(String error) {
+                onError.invoke(error);
+            }
+        });
     }
 }
