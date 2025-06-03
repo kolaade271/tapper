@@ -1,0 +1,18 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 33
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+    }
+    repositories {
+        flatDir {
+            dirs 'src/main/libs'
+        }
+    }
+}
+
+dependencies {
+    implementation(name: 'tappa-release', ext: 'aar')
+}

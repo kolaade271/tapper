@@ -1,0 +1,7 @@
+{
+  "name": "react-native-tappa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": ["react-native", "android", "tappa"],
+  "nativePackage": true
+}
